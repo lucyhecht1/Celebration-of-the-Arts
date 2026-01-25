@@ -47,7 +47,7 @@ for filename in os.listdir(input_folder):
         img = img.resize((max_width, new_height), Image.LANCZOS)
 
     # Save as WebP
-    img.save(output_path, "WEBP", quality=70)
+    img.save(output_path, "WEBP", quality=85)
 
     print(f"✅ Converted & Compressed: {filename} → {webp_filename}")
 

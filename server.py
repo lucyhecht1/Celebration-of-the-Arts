@@ -17,27 +17,57 @@ load_dotenv()
 
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 google_credentials_json = os.getenv("GOOGLE_CREDENTIALS_JSON")
+creds_dict = None
 
-if not google_credentials_json:
-    raise ValueError("❌ GOOGLE_CREDENTIALS_JSON environment variable not set!")
+if google_credentials_json:
+    try:
+        creds_dict = json.loads(google_credentials_json)
+        # Fix private key formatting
+        private_key = creds_dict.get("private_key", "")
+        # Replace escaped newlines with actual newlines
+        private_key = private_key.replace("\\n", "\n")
+        # Fix header/footer if they're missing spaces
+        private_key = private_key.replace("-----BEGINPRIVATEKEY-----", "-----BEGIN PRIVATE KEY-----")
+        private_key = private_key.replace("-----ENDPRIVATEKEY-----", "-----END PRIVATE KEY-----")
+        # Ensure proper formatting
+        if not private_key.startswith("-----BEGIN"):
+            print("⚠️  Warning: Private key format may be invalid")
+        creds_dict["private_key"] = private_key
 
-try:
-    creds_dict = json.loads(google_credentials_json)
-    creds_dict["private_key"] = creds_dict["private_key"].replace("\\n", "\n")  # 🔥 FIX HERE
+        print("✅ Google Credentials Loaded Successfully")
+        print(f"Private Key Exists: {'private_key' in creds_dict}")
+        print(f"First 50 characters of Private Key: {creds_dict.get('private_key', '')[:50]}")
 
-    print("✅ Google Credentials Loaded Successfully")
-    print(f"Private Key Exists: {'private_key' in creds_dict}")
-    print(f"First 50 characters of Private Key: {creds_dict.get('private_key', '')[:50]}")
+    except json.JSONDecodeError:
+        print("⚠️  Warning: Failed to parse GOOGLE_CREDENTIALS_JSON. Google Sheets will be disabled.")
+        creds_dict = None
+    except KeyError as e:
+        print(f"⚠️  Warning: Missing required field in credentials: {e}. Google Sheets will be disabled.")
+        creds_dict = None
+else:
+    print("⚠️  Warning: GOOGLE_CREDENTIALS_JSON not set. Google Sheets integration will be disabled.")
 
-except json.JSONDecodeError:
-    raise ValueError("❌ Failed to parse GOOGLE_CREDENTIALS_JSON. Check formatting.")
+# Initialize Google Sheets client (lazy loading)
+client = None
+sheet = None
 
-# Authenticate with Google Sheets
-creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
-client = gspread.authorize(creds)
-
-# Open your Google Sheet
-sheet = client.open("Yavneh-Arts-RSVP").sheet1
+def get_google_sheet():
+    """Lazy load Google Sheets connection"""
+    global client, sheet
+    if creds_dict is None:
+        return None
+    if client is None:
+        try:
+            print("🔗 Connecting to Google Sheets...")
+            creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+            client = gspread.authorize(creds)
+            sheet = client.open("Yavneh-Arts-RSVP").sheet1
+            print("✅ Google Sheets connected successfully")
+        except Exception as e:
+            print(f"⚠️  Warning: Could not connect to Google Sheets: {e}")
+            print("⚠️  RSVP submissions will not be saved to Google Sheets")
+            return None
+    return sheet
 
 def create_db():
     conn = sqlite3.connect('rsvp.db')
@@ -97,7 +127,13 @@ def submit_rsvp():
     if not firstName or not lastName or not email:
         return jsonify({"error": "All fields are required!"}), 400
 
-    sheet.append_row([firstName, lastName, email])  # Add RSVP to Google Sheet
+    # Try to save to Google Sheets (if available)
+    google_sheet = get_google_sheet()
+    if google_sheet:
+        try:
+            google_sheet.append_row([firstName, lastName, email])
+        except Exception as e:
+            print(f"⚠️  Error saving to Google Sheets: {e}")
     
     return jsonify({"message": "Thank you! Your response has been submitted!"})
 
@@ -121,4 +157,5 @@ def chessed():
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))  # Render requires this
-    app.run(debug=True)
+    print(f"🚀 Starting server on http://localhost:{port}")
+    app.run(debug=True, host='0.0.0.0', port=port)
