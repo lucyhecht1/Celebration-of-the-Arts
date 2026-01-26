@@ -61,8 +61,10 @@ def get_google_sheet():
             print("🔗 Connecting to Google Sheets...")
             creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
             client = gspread.authorize(creds)
-            sheet = client.open("Yavneh-Arts-RSVP").sheet1
-            print("✅ Google Sheets connected successfully")
+            # Get Google Sheet name from environment variable, default to "Yavneh-Arts-RSVP"
+            sheet_name = os.getenv("GOOGLE_SHEET_NAME", "Yavneh-Arts-RSVP")
+            sheet = client.open(sheet_name).sheet1
+            print(f"✅ Google Sheets connected successfully: {sheet_name}")
         except Exception as e:
             print(f"⚠️  Warning: Could not connect to Google Sheets: {e}")
             print("⚠️  RSVP submissions will not be saved to Google Sheets")
