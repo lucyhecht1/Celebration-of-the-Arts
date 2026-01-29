@@ -1,0 +1,388 @@
+{% extends "layout.html" %}
+
+{% block title %}Auction - Yavneh Celebration of the Arts{% endblock %}
+
+{% block content %}
+<section class="about-hero">
+    <div class="container text-center white-text">
+        <h1>Purim Auction</h1>
+    </div>
+</section>
+
+<section class="auction-section">
+    <div class="container">
+        <div class="row">
+            <!-- Auction Card Template - Copy this block for each auction item -->
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="auction-card-flip" onclick="flipCard(this)">
+                    <div class="auction-card-inner">
+                        <div class="auction-card-front">
+                            <div class="card-icon">?</div>
+                        </div>
+                        <div class="auction-card-back">
+                            <div class="auction-item">
+                                <!-- Add what's being auctioned here -->
+                                <p>Order Kiddush with me! Your favorite snacks and cravings.</p>
+                            </div>
+                            <hr class="auction-divider">
+                            <div class="auction-donor">
+                                <!-- Add donor name here -->
+                                <p class="donor-name">Kyra Weisberger</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Auction Card Template -->
+
+            <!-- Example cards - replace with your actual auction items -->
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="auction-card-flip" onclick="flipCard(this)">
+                    <div class="auction-card-inner">
+                        <div class="auction-card-front">
+                            <div class="card-icon">?</div>
+                        </div>
+                        <div class="auction-card-back">
+                            <div class="auction-item">
+                                <p>Give Friday night announcements</p>
+                            </div>
+                            <hr class="auction-divider">
+                            <div class="auction-donor">
+                                <p class="donor-name">Kyra Weisberger</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="auction-card-flip" onclick="flipCard(this)">
+                    <div class="auction-card-inner">
+                        <div class="auction-card-front">
+                            <div class="card-icon">?</div>
+                        </div>
+                        <div class="auction-card-back">
+                            <div class="auction-item">
+                                <p>Line Dancing with me and 2 of your friends</p>
+                            </div>
+                            <hr class="auction-divider">
+                            <div class="auction-donor">
+                                <p class="donor-name">Kyra Weisberger</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="auction-card-flip" onclick="flipCard(this)">
+                    <div class="auction-card-inner">
+                        <div class="auction-card-front">
+                            <div class="card-icon">?</div>
+                        </div>
+                        <div class="auction-card-back">
+                            <div class="auction-item">
+                                <p>Homemade sourdough loaf!</p>
+                            </div>
+                            <hr class="auction-divider">
+                            <div class="auction-donor">
+                                <p class="donor-name">Tali Kobrin</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="auction-card-flip" onclick="flipCard(this)">
+                    <div class="auction-card-inner">
+                        <div class="auction-card-front">
+                            <div class="card-icon">?</div>
+                        </div>
+                        <div class="auction-card-back">
+                            <div class="auction-item">
+                                <p>A visit from the Shakespeare troupe</p>
+                            </div>
+                            <hr class="auction-divider">
+                            <div class="auction-donor">
+                                <p class="donor-name">Abigail Langer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="auction-card-flip" onclick="flipCard(this)">
+                    <div class="auction-card-inner">
+                        <div class="auction-card-front">
+                            <div class="card-icon">?</div>
+                        </div>
+                        <div class="auction-card-back">
+                            <div class="auction-item">
+                                <p>Date with Babe and Simone</p>
+                            </div>
+                            <hr class="auction-divider">
+                            <div class="auction-donor">
+                                <p class="donor-name">Babe Nelson and Simone</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="auction-card-flip" onclick="flipCard(this)">
+                    <div class="auction-card-inner">
+                        <div class="auction-card-front">
+                            <div class="card-icon">?</div>
+                        </div>
+                        <div class="auction-card-back">
+                            <div class="auction-item">
+                                <p>Eat lunch with Gabbinate </p>
+                            </div>
+                            <hr class="auction-divider">
+                            <div class="auction-donor">
+                                <p class="donor-name">Adin Halbfinger</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="auction-card-flip" onclick="flipCard(this)">
+                    <div class="auction-card-inner">
+                        <div class="auction-card-front">
+                            <div class="card-icon">?</div>
+                        </div>
+                        <div class="auction-card-back">
+                            <div class="auction-item">
+                                <p>Cut the line at senior night with me and 4 of your friends</p>
+                            </div>
+                            <hr class="auction-divider">
+                            <div class="auction-donor">
+                                <p class="donor-name">Tifi Grossman</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="auction-card-flip" onclick="flipCard(this)">
+                    <div class="auction-card-inner">
+                        <div class="auction-card-front">
+                            <div class="card-icon">?</div>
+                        </div>
+                        <div class="auction-card-back">
+                            <div class="auction-item">
+                                <p>An invitation to a Susman dinner in the dorms</p>
+                            </div>
+                            <hr class="auction-divider">
+                            <div class="auction-donor">
+                                <p class="donor-name">Rachel Susman</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="auction-card-flip" onclick="flipCard(this)">
+                    <div class="auction-card-inner">
+                        <div class="auction-card-front">
+                            <div class="card-icon">?</div>
+                        </div>
+                        <div class="auction-card-back">
+                            <div class="auction-item">
+                                <p>Ownership of the 6C Office</p>
+                            </div>
+                            <hr class="auction-divider">
+                            <div class="auction-donor">
+                                <p class="donor-name">Gabriel Nelson</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="auction-card-flip" onclick="flipCard(this)">
+                    <div class="auction-card-inner">
+                        <div class="auction-card-front">
+                            <div class="card-icon">?</div>
+                        </div>
+                        <div class="auction-card-back">
+                            <div class="auction-item">
+                                <p>Will make your salad next time you are assigned salad for a meal</p>
+                            </div>
+                            <hr class="auction-divider">
+                            <div class="auction-donor">
+                                <p class="donor-name">Simone Miller</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="auction-card-flip" onclick="flipCard(this)">
+                    <div class="auction-card-inner">
+                        <div class="auction-card-front">
+                            <div class="card-icon">?</div>
+                        </div>
+                        <div class="auction-card-back">
+                            <div class="auction-item">
+                                <p>Skills and Drills with Coach Hecht. Make sure to bring water.</p>
+                            </div>
+                            <hr class="auction-divider">
+                            <div class="auction-donor">
+                                <p class="donor-name">Lucy Hecht</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+<!-- Auction Modal -->
+<div id="auctionModal" class="auction-modal">
+    <span class="close" onclick="closeAuctionModal()">&times;</span>
+    <button class="prev" onclick="changeAuctionItem(-1)">&#10094;</button>
+    <button class="next" onclick="changeAuctionItem(1)">&#10095;</button>
+    <div class="auction-modal-content">
+        <div class="auction-modal-item">
+            <p id="modalItemDescription"></p>
+        </div>
+        <hr class="auction-modal-divider">
+        <div class="auction-modal-donor">
+            <p class="modal-donor-name" id="modalDonorName">Donor Name</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Flip card function
+    function flipCard(cardElement) {
+        cardElement.classList.toggle('flipped');
+    }
+
+    // Store auction items data - update this array as you add cards
+    // IMPORTANT: Keep this array in sync with your cards above!
+    // The index in onclick="openAuctionModal(X)" must match the array index
+    const auctionItems = [
+        {
+            item: "Order Kiddush with me! Your favorite snacks and cravings.",
+            donor: "Kyra Weisberger"
+        },
+        {
+            item: "Give Friday night announcements",
+            donor: "Kyra Weisberger"
+        },
+        {
+            item: "Line Dancing with me and 2 of your friends",
+            donor: "Kyra Weisberger"
+        },
+        {
+            item: "Homemade sourdough loaf!",
+            donor: "Tali Kobrin"
+        },
+        {
+            item: "A visit from the Shakespeare troupe",
+            donor: "Abigail Langer"
+        },
+        {
+            item: "Date with Babe and Simone",
+            donor: "Babe Nelson and Simone"
+        },
+        {
+            item: "Eat lunch with Gabbinate ",
+            donor: "Adin Halbfinger"
+        },
+        {
+            item: "Cut the line at senior night with me and 4 of your friends",
+            donor: "Tifi Grossman"
+        },
+        {
+            item: "An invitation to a Susman dinner in the dorms",
+            donor: "Rachel Susman"
+        },
+        {
+            item: "Ownership of the 6C Office",
+            donor: "Gabriel Nelson"
+        },
+        {
+            item: "Will make your salad next time you are assigned salad for a meal",
+            donor: "Simone Miller"
+        },
+        {
+            item: "Skills and Drills with Coach Hecht. Make sure to bring water.",
+            donor: "Lucy Hecht"
+        }
+        // Add more items here as you add cards
+        // Format: { item: "description", donor: "name" }
+    ];
+
+    let currentAuctionIndex = 0; // Track the current auction item index
+    const totalAuctionItems = auctionItems.length;
+
+    // Open auction modal
+    function openAuctionModal(index) {
+        const modal = document.getElementById('auctionModal');
+        const item = auctionItems[index];
+
+        if (item) {
+            currentAuctionIndex = index; // Update current index
+            document.getElementById('modalItemDescription').textContent = item.item;
+            document.getElementById('modalDonorName').textContent = item.donor;
+            modal.style.display = 'block';
+            document.body.classList.add('modal-open');
+        }
+    }
+
+    // Change auction item with navigation
+    function changeAuctionItem(direction) {
+        currentAuctionIndex += direction;
+
+        // Wrap around if out of bounds
+        if (currentAuctionIndex < 0) {
+            currentAuctionIndex = totalAuctionItems - 1;
+        } else if (currentAuctionIndex >= totalAuctionItems) {
+            currentAuctionIndex = 0;
+        }
+
+        // Update modal content
+        const item = auctionItems[currentAuctionIndex];
+        if (item) {
+            document.getElementById('modalItemDescription').textContent = item.item;
+            document.getElementById('modalDonorName').textContent = item.donor;
+        }
+    }
+
+    // Close auction modal
+    function closeAuctionModal() {
+        document.getElementById('auctionModal').style.display = 'none';
+        document.body.classList.remove('modal-open');
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function (event) {
+        const modal = document.getElementById('auctionModal');
+        if (event.target == modal) {
+            closeAuctionModal();
+        }
+    }
+
+    // Keyboard navigation for the modal
+    document.addEventListener('keydown', function (event) {
+        const modal = document.getElementById('auctionModal');
+        if (modal.style.display === 'block') {
+            if (event.key === 'Escape') {
+                closeAuctionModal();
+            } else if (event.key === 'ArrowLeft') {
+                changeAuctionItem(-1);
+            } else if (event.key === 'ArrowRight') {
+                changeAuctionItem(1);
+            }
+        }
+    });
+</script>
+
+<section></section>
+{% endblock %}
