@@ -157,6 +157,11 @@ def contact():
 def chessed():
     return render_template('chessed.html')
 
+# Auction route
+@app.route('/auction')
+def auction():
+    return render_template('auction.html')
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))  # Render requires this
     print(f"🚀 Starting server on http://localhost:{port}")
