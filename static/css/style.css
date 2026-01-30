@@ -622,6 +622,7 @@ section p {
     padding: 60px 0;
     background-color: #f9f9f9;
     font-family: 'Georgia', serif;
+    min-height: calc(100vh - 200px);
 }
 .tap-to-see-text {
     font-family: 'Georgia', serif;
@@ -631,6 +632,9 @@ section p {
     text-align: center;
     margin-bottom: 30px;
     margin-top: 20px;
+}
+.reveal-all-btn {
+    margin-top: 15px;
 }
 .auction-card {
     background: white;

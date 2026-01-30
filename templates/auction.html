@@ -13,6 +13,7 @@
     <div class="container">
         <div class="text-center mb-4">
             <h2 class="tap-to-see-text">Tap the cards to reveal the auction items</h2>
+            <button class="btn glimmer-btn reveal-all-btn" onclick="revealAllCards()">Reveal All</button>
         </div>
         <div class="row">
             <!-- Auction Card Template - Copy this block for each auction item -->
@@ -39,43 +40,6 @@
             <!-- End of Auction Card Template -->
 
             <!-- Example cards - replace with your actual auction items -->
-            <div class="col-md-4 col-sm-6 mb-4">
-                <div class="auction-card-flip" onclick="flipCard(this)">
-                    <div class="auction-card-inner">
-                        <div class="auction-card-front">
-                            <div class="card-icon">✨</div>
-                        </div>
-                        <div class="auction-card-back">
-                            <div class="auction-item">
-                                <p>Give Friday night announcements</p>
-                            </div>
-                            <hr class="auction-divider">
-                            <div class="auction-donor">
-                                <p class="donor-name">Kyra Weisberger</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6 mb-4">
-                <div class="auction-card-flip" onclick="flipCard(this)">
-                    <div class="auction-card-inner">
-                        <div class="auction-card-front">
-                            <div class="card-icon">✨</div>
-                        </div>
-                        <div class="auction-card-back">
-                            <div class="auction-item">
-                                <p>Line Dancing with me and 2 of your friends</p>
-                            </div>
-                            <hr class="auction-divider">
-                            <div class="auction-donor">
-                                <p class="donor-name">Kyra Weisberger</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="col-md-4 col-sm-6 mb-4">
                 <div class="auction-card-flip" onclick="flipCard(this)">
                     <div class="auction-card-inner">
@@ -120,11 +84,11 @@
                         </div>
                         <div class="auction-card-back">
                             <div class="auction-item">
-                                <p>Date with Babe and Simone</p>
+                                <p>A cake! (Check out @eliwestbaking on instagram!)</p>
                             </div>
                             <hr class="auction-divider">
                             <div class="auction-donor">
-                                <p class="donor-name">Babe Nelson and Simone</p>
+                                <p class="donor-name">Eli West</p>
                             </div>
                         </div>
                     </div>
@@ -143,6 +107,24 @@
                             <hr class="auction-divider">
                             <div class="auction-donor">
                                 <p class="donor-name">Adin Halbfinger</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="auction-card-flip" onclick="flipCard(this)">
+                    <div class="auction-card-inner">
+                        <div class="auction-card-front">
+                            <div class="card-icon">✨</div>
+                        </div>
+                        <div class="auction-card-back">
+                            <div class="auction-item">
+                                <p>Give Friday night announcements</p>
+                            </div>
+                            <hr class="auction-divider">
+                            <div class="auction-donor">
+                                <p class="donor-name">Kyra Weisberger</p>
                             </div>
                         </div>
                     </div>
@@ -228,11 +210,65 @@
                         </div>
                         <div class="auction-card-back">
                             <div class="auction-item">
-                                <p>Skills and Drills with Coach Hecht. Make sure to bring water.</p>
+                                <p>Line Dancing with me and 2 of your friends</p>
+                            </div>
+                            <hr class="auction-divider">
+                            <div class="auction-donor">
+                                <p class="donor-name">Kyra Weisberger</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="auction-card-flip" onclick="flipCard(this)">
+                    <div class="auction-card-inner">
+                        <div class="auction-card-front">
+                            <div class="card-icon">✨</div>
+                        </div>
+                        <div class="auction-card-back">
+                            <div class="auction-item">
+                                <p>Skills and Drills. Make sure to bring water.</p>
                             </div>
                             <hr class="auction-divider">
                             <div class="auction-donor">
                                 <p class="donor-name">Lucy Hecht</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="auction-card-flip" onclick="flipCard(this)">
+                    <div class="auction-card-inner">
+                        <div class="auction-card-front">
+                            <div class="card-icon">✨</div>
+                        </div>
+                        <div class="auction-card-back">
+                            <div class="auction-item">
+                                <p>2 Free Latenite tickets</p>
+                            </div>
+                            <hr class="auction-divider">
+                            <div class="auction-donor">
+                                <p class="donor-name">Abner and Noa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="auction-card-flip" onclick="flipCard(this)">
+                    <div class="auction-card-inner">
+                        <div class="auction-card-front">
+                            <div class="card-icon">✨</div>
+                        </div>
+                        <div class="auction-card-back">
+                            <div class="auction-item">
+                                <p>Pre Shabbos Yoga Sculpt and Shvitz</p>
+                            </div>
+                            <hr class="auction-divider">
+                            <div class="auction-donor">
+                                <p class="donor-name">David Lederer</p>
                             </div>
                         </div>
                     </div>
@@ -266,6 +302,31 @@
         cardElement.classList.toggle('flipped');
     }
 
+    // Track reveal state
+    let allCardsRevealed = false;
+
+    // Reveal/Cover all cards function
+    function revealAllCards() {
+        const allCards = document.querySelectorAll('.auction-card-flip');
+        const button = document.querySelector('.reveal-all-btn');
+        
+        if (allCardsRevealed) {
+            // Conceal all cards
+            allCards.forEach(card => {
+                card.classList.remove('flipped');
+            });
+            button.textContent = 'Reveal All';
+            allCardsRevealed = false;
+        } else {
+            // Reveal all cards
+            allCards.forEach(card => {
+                card.classList.add('flipped');
+            });
+            button.textContent = 'Conceal All';
+            allCardsRevealed = true;
+        }
+    }
+
     // Store auction items data - update this array as you add cards
     // IMPORTANT: Keep this array in sync with your cards above!
     // The index in onclick="openAuctionModal(X)" must match the array index
@@ -291,8 +352,8 @@
             donor: "Abigail Langer"
         },
         {
-            item: "Date with Babe and Simone",
-            donor: "Babe Nelson and Simone"
+            item: "A cake! (Check out @eliwestbaking on instagram!)",
+            donor: "Eli West"
         },
         {
             item: "Eat lunch with Gabbinate ",
@@ -315,8 +376,12 @@
             donor: "Simone Miller"
         },
         {
-            item: "Skills and Drills with Coach Hecht. Make sure to bring water.",
+            item: "Skills and Drills. Make sure to bring water.",
             donor: "Lucy Hecht"
+        },
+        {
+            item: "Pre Shabbos Yoga Sculpt and Shvitz",
+            donor: "David Lederer"
         }
         // Add more items here as you add cards
         // Format: { item: "description", donor: "name" }
@@ -386,6 +451,4 @@
         }
     });
 </script>
-
-<section></section>
 {% endblock %}
