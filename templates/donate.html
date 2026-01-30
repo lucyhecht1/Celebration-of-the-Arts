@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}Donate - Yavneh Celebration of the Arts{% endblock %}
+
+{% block body_class %}page-donate{% endblock %}
+
+{% block content %}
+<section class="about-hero">
+  <div class="container text-center white-text">
+    <h1>Donate</h1>
+  </div>
+</section>
+
+<div class="container mt-5 page-donate-content">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="text-center mb-4">
+        <p class="donation-text">
+          Celebration of the Arts relies on your generous contributions to make our event possible.
+          Your donations directly support the production and execution of our annual celebration,
+          helping us bring together our community through music, art, and performance. Thank you!
+        </p>
+      </div>
+
+      <div class="donation-block">
+        <div class="qgiv-embed-container"
+             data-qgiv-embed="true"
+             data-embed-id="87633"
+             data-embed="https://secure.qgiv.com/for/celebrationofthearts2026/embed/87633/"
+             data-width="630"></div>
+
+        <div class="text-center donate-external-wrap">
+          <a href="https://secure.qgiv.com/for/celebrationofthearts2026"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn glimmer-btn">
+            Donate externally
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section></section>
+
+<script>
+  (function (w, d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://secure.qgiv.com/resources/core/js/embed.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  })(window, document, "script", "qgiv-embedjs");
+</script>
+{% endblock %}

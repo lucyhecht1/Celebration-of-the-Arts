@@ -147,10 +147,10 @@ def export_rsvps():
     conn.close()
     return jsonify({"message": "RSVPs exported to rsvp.csv!"})
 
-# Contact route
-@app.route('/contact')
-def contact():
-    return render_template('contact.html')
+# Donate route
+@app.route('/donate')
+def donate():
+    return render_template('donate.html')
 
 # Chessed route
 @app.route('/chessed')
