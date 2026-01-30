@@ -1114,16 +1114,19 @@ section p {
 }
 
 .page-donate .qgiv-embed-container {
-    min-height: 520px;
     width: 100%;
     max-width: 630px;
     margin: 0 auto;
     display: block;
+    max-height: 600px;
+    overflow: hidden;
 }
 
 .page-donate .qgiv-embed-container iframe {
     max-width: 100%;
+    max-height: 450px;
     display: block;
+    overflow: hidden;
 }
 
 .page-donate .donate-external-wrap {
