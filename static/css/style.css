@@ -411,6 +411,36 @@ section p {
     padding: 0 !important;
 }
 
+/* Make modal image larger and hide arrows on mobile */
+@media (max-width: 768px) {
+    .modal {
+        padding-top: 0;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-content {
+        max-width: 90%;
+        max-height: 80vh;
+    }
+
+    .prev,
+    .next {
+        display: none;
+    }
+}
+
+/* Center modal image on medium screens while keeping arrows */
+@media (min-width: 769px) and (max-width: 1200px) {
+    .modal {
+        padding-top: 0;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
 .close {
     position: absolute;
     top: 20px;
@@ -608,6 +638,31 @@ section p {
 }
 
 .gallery-2025 .gallery-image:hover {
+    transform: scale(1.05);
+}
+
+/* Gallery 2026 Styling */
+.gallery-2026 .col-md-4,
+.gallery-2026 .col-sm-6 {
+    aspect-ratio: 4 / 3;
+    /* Force horizontal rectangle */
+    overflow: hidden;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+.gallery-2026 .gallery-image {
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-2026 .gallery-image:hover {
     transform: scale(1.05);
 }
 
