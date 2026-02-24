@@ -413,7 +413,7 @@ section p {
 
 /* Make modal image larger and hide arrows on mobile */
 @media (max-width: 768px) {
-    .modal {
+    .modal.open {
         padding-top: 0;
         display: flex !important;
         align-items: center;
@@ -433,7 +433,7 @@ section p {
 
 /* Center modal image on medium screens while keeping arrows */
 @media (min-width: 769px) and (max-width: 1200px) {
-    .modal {
+    .modal.open {
         padding-top: 0;
         display: flex !important;
         align-items: center;
@@ -449,6 +449,8 @@ section p {
     font-size: 35px;
     font-weight: bold;
     cursor: pointer;
+    z-index: 1060;
+    pointer-events: auto;
 }
 
 .prev,

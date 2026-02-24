@@ -55,7 +55,8 @@
         const downloadBtn = document.getElementById('downloadBtn');
 
         currentIndex = index; // Update current image index
-        modal.style.display = 'block';
+        modal.classList.add('open');
+        modal.style.display = (window.innerWidth <= 1200 ? 'flex' : 'block');
         const paddedIndex = String(index).padStart(3, '0');
         modalImg.src = `/static/images/gallery2026_compressed/COA_2026_${paddedIndex}.webp`;
         downloadBtn.href = modalImg.src; // Set download button link
@@ -66,7 +67,9 @@
 
     // Close modal
     function closeModal() {
-        document.getElementById('imageModal').style.display = 'none';
+        const modal = document.getElementById('imageModal');
+        modal.style.display = 'none';
+        modal.classList.remove('open');
         document.body.classList.remove('modal-open');
     }
 
