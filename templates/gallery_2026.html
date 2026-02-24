@@ -3,6 +3,8 @@
 {% block title %}Gallery 2026 - Yavneh Celebration of the Arts{% endblock %}
 
 {% block content %}
+{# Example to fill later: 1: "Student Name", 2: "Another Name" #}
+{% set winners = {} %}
 <section class="about-hero">
     <div class="container text-center white-text">
         <h1>Gallery 2026</h1>
@@ -14,7 +16,11 @@
             <!-- Gallery Images -->
             {% for i in range(1, 353) %}
             {% if i != 144 %}
+            {% set winner_name = winners.get(i) %}
             <div class="col-md-4 col-sm-6 mb-4">
+                {% if winner_name %}
+                <div class="winner-label">Winner: {{ winner_name }}</div>
+                {% endif %}
                 <img src="{{ url_for('static', filename='images/gallery2026_compressed/COA_2026_' ~ '%03d'|format(i) ~ '.webp') }}"
                     alt="Gallery Image {{ i }}" 
                     class="img-fluid gallery-image" 

@@ -666,6 +666,22 @@ section p {
     transform: scale(1.05);
 }
 
+.winner-label {
+    font-family: 'Georgia', serif;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #28a745;
+    margin-bottom: 0.25rem;
+    text-align: center;
+}
+
+.auction-winner {
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
 /***************************/
 /******** CHESSED **********/
 .chessed-container {
@@ -887,6 +903,8 @@ section p {
     background: white;
     color: #001f3f;
     transform: rotateY(180deg);
+    /* Allow winner label at top to be fully visible */
+    overflow: visible;
 }
 
 .card-icon {
@@ -931,10 +949,13 @@ section p {
     hyphens: auto;
     overflow-y: auto;
     overflow-x: hidden;
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center;
     min-height: 0;
+    padding-top: 8px;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y; 
 }
 
 .auction-item p {
