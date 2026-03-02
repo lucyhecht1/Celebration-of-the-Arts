@@ -10,6 +10,7 @@ from flask import Flask, render_template
 from flask_compress import Compress
 
 app = Flask(__name__)
+app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 31536000
 Compress(app)  # Enable compression
 
 # Load environment variables from .env file

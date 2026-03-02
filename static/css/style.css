@@ -367,6 +367,11 @@ section p {
     border-radius: 10px;
 }
 
+.gallery-tile {
+    content-visibility: auto;
+    contain-intrinsic-size: 320px 240px;
+}
+
 .gallery-2024 .gallery-image {
     cursor: pointer;
     border-radius: 10px;
@@ -376,6 +381,7 @@ section p {
     height: 100%;
     object-fit: cover;
     display: block;
+    background: linear-gradient(135deg, #e8edf3, #f7f9fb);
 }
 
 .gallery-2024 .gallery-image:hover {
@@ -637,6 +643,7 @@ section p {
     height: 100%;
     object-fit: cover;
     display: block;
+    background: linear-gradient(135deg, #e8edf3, #f7f9fb);
 }
 
 .gallery-2025 .gallery-image:hover {
@@ -662,6 +669,7 @@ section p {
     height: 100%;
     object-fit: cover;
     display: block;
+    background: linear-gradient(135deg, #e8edf3, #f7f9fb);
 }
 
 .gallery-2026 .gallery-image:hover {
