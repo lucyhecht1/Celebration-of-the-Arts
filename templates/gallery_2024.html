@@ -14,16 +14,10 @@
             <!-- Gallery Images -->
             {% for i in range(1, 181) %}
             {% if i not in [40, 67, 68, 69, 147] %} <!-- Skip missing image indices -->
-            {% set image_src = url_for('static', filename='images/gallery2024_compressed/image' ~ i ~ '.webp') %}
-            {% set priority_image = i <= 6 %}
-            <div class="col-md-4 col-sm-6 mb-4 gallery-tile">
-                <img src="{% if priority_image %}{{ image_src }}{% else %}data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E{% endif %}" 
-                     {% if not priority_image %}data-src="{{ image_src }}"{% endif %}
+            <div class="col-md-4 col-sm-6 mb-4">
+                <img src="{{ url_for('static', filename='images/gallery2024_compressed/image' ~ i ~ '.webp') }}" 
                      alt="Gallery Image {{ i }}" 
                      class="img-fluid gallery-image" 
-                     loading="{% if priority_image %}eager{% else %}lazy{% endif %}"
-                     decoding="async"
-                     fetchpriority="{% if priority_image %}high{% else %}low{% endif %}"
                      onclick="openModal({{ i }})">
             </div>
             {% endif %}
@@ -48,64 +42,6 @@
     let currentIndex = 0; // Track the current image index
     const skipIndices = [40, 67, 68, 69, 147]; // Indices to skip
     const totalImages = 180; // Total number of images
-    const previewObserver = 'IntersectionObserver' in window
-        ? new IntersectionObserver((entries, observer) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) {
-                    return;
-                }
-
-                const image = entry.target;
-                if (image.dataset.src) {
-                    image.src = image.dataset.src;
-                    image.removeAttribute('data-src');
-                }
-                observer.unobserve(image);
-            });
-        }, { rootMargin: '300px 0px' })
-        : null;
-
-    document.querySelectorAll('.gallery-image[data-src]').forEach((image) => {
-        if (previewObserver) {
-            previewObserver.observe(image);
-            return;
-        }
-
-        image.src = image.dataset.src;
-        image.removeAttribute('data-src');
-    });
-
-    function imageUrl(index) {
-        return `/static/images/gallery2024_compressed/image${index}.webp`;
-    }
-
-    function preloadNearbyImages(index) {
-        const nextIndices = [1, -1].map((direction) => {
-            let candidate = index + direction;
-
-            if (candidate < 1) {
-                candidate = totalImages;
-            } else if (candidate > totalImages) {
-                candidate = 1;
-            }
-
-            while (skipIndices.includes(candidate)) {
-                candidate += direction;
-                if (candidate < 1) {
-                    candidate = totalImages;
-                } else if (candidate > totalImages) {
-                    candidate = 1;
-                }
-            }
-
-            return candidate;
-        });
-
-        nextIndices.forEach((candidate) => {
-            const image = new Image();
-            image.src = imageUrl(candidate);
-        });
-    }
 
     // Open modal and display selected image
     function openModal(index) {
@@ -121,9 +57,8 @@
 
         currentIndex = index; // Update current image index
         modal.style.display = 'block';
-        modalImg.src = imageUrl(index);
+        modalImg.src = `/static/images/gallery2024_compressed/image${index}.webp`;
         downloadBtn.href = modalImg.src; // Set download button link
-        preloadNearbyImages(index);
 
         // Add "modal-open" class to body to disable hover effects
         document.body.classList.add('modal-open');
@@ -160,9 +95,8 @@
                 currentIndex = 1;
             }
         }
-        modalImg.src = imageUrl(currentIndex);
+        modalImg.src = `/static/images/gallery2024_compressed/image${currentIndex}.webp`;
         downloadBtn.href = modalImg.src; // Update download button link
-        preloadNearbyImages(currentIndex);
     }
 
     // Add keyboard navigation for the modal
